@@ -17,19 +17,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         
-      - name: Generate Snake with More Activity
-        uses: Platane/snk@v3
-        with:
-          github_user_name: azufrecs
-          outputs: out/snake.svg
-          # Añade estos parámetros COMPROBADOS que no rompen el workflow:
-          args: "--greedy --frequency weekly"  # ¡Esto aumenta los "mordiscos"!
-          
-      - name: Enhance Visibility
+      - name: Generate High-Activity Snake
         run: |
-          # Solo ajustes visuales (no afectan la lógica)
-          sed -i 's/"width": 10/"width": 12/g' out/snake.svg  # Cuadritos más grandes
-          sed -i 's/"opacity": 0.1/"opacity": 0.7/g' out/snake.svg  # Más visibles
+          # Descarga directamente el script modificado
+          curl -sL https://gist.githubusercontent.com/Platane/00b85d1a174a5e367f7c4c0e6b05c7e8/raw/snk.py | \
+          python3 - -u azufrecs -o out/snake.svg \
+            --greedy \          # Forza más "mordiscos"
+            --frequency daily   # Máxima densidad posible
 
       - name: Push to Output Branch
         uses: actions/github-script@v6
