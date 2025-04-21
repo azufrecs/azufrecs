@@ -3,7 +3,7 @@ name: Generate Snake
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 0 * * *"  # Actualiza diariamente a medianoche UTC
+    - cron: "0 0 * * *"
   push:
     branches:
       - main
@@ -22,21 +22,16 @@ jobs:
         with:
           github_user_name: azufrecs
           outputs: out/snake.svg
-          snake_color: "#4CC9F0"  # Azul eléctrico
-          empty_color: "#F8F9FA"  # Gris claro para fondo
-          snake_size: "large"
-          snake_type: "greedy"    # Mordiscos más agresivos
-          rect_size: 12           # Cuadritos más grandes
-          gap: 1                  # Menos espacio entre cuadros
-          circles: true           # Forma circular moderna
-          commit_frequency: "daily" # Máxima frecuencia
+          # Solo parámetros oficialmente soportados:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          args: "--user azufrecs --output out/snake.svg --color green --size large"
 
-      - name: Boost Visual Impact
+      - name: Enhance Visuals
         run: |
-          # Aumenta opacidad y tamaño (efecto más visible)
-          sed -i 's/"fill-opacity": 0.1/"fill-opacity": 0.6/g' out/snake.svg
-          sed -i 's/"width": 10/"width": 16/g' out/snake.svg
-          sed -i 's/"stroke-width": 1/"stroke-width": 2/g' out/snake.svg
+          # Modificación directa del SVG para mejor visibilidad
+          sed -i 's/"width": 10/"width": 14/g' out/snake.svg
+          sed -i 's/"height": 10/"height": 14/g' out/snake.svg
+          sed -i 's/"fill-opacity": 0.1/"fill-opacity": 0.5/g' out/snake.svg
 
       - name: Push to Output Branch
         uses: actions/github-script@v6
@@ -48,14 +43,10 @@ jobs:
               execSync('git checkout --orphan output');
               execSync('git rm -rf .');
               fs.copyFileSync('out/snake.svg', 'github-contribution-grid-snake.svg');
-              
-              # Crea un README.md adicional para el branch
-              fs.writeFileSync('README.md', '# Snake Animation\n\n![Snake](github-contribution-grid-snake.svg)');
-              
-              execSync('git add .');
-              execSync('git config user.name "GitHub Snake Bot"');
-              execSync('git config user.email "snake-bot@users.noreply.github.com"');
-              execSync('git commit -m "🔄 Updated snake animation $(date +\'%Y-%m-%d\')"');
+              execSync('git add github-contribution-grid-snake.svg');
+              execSync('git config user.name "GitHub Actions"');
+              execSync('git config user.email "actions@github.com"');
+              execSync('git commit -m "Update snake animation"');
               execSync('git push origin output --force');
             } catch (error) {
               console.error(error);
