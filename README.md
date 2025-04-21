@@ -1,5 +1,9 @@
 ## Hi there 👋
 
+Watch a 🐍 eat my GitHub contributions 🍏.
+
+![Snake animation](https://github.com/tunombre/tunombre/blob/output/github-contribution-grid-snake.svg)
+
 <!--
 **azufrecs/azufrecs** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
