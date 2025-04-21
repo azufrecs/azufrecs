@@ -6,6 +6,7 @@ Watch a 🐍 eat my GitHub contributions 🍏.
 
 ![Snake animation](https://github.com/azufrecs/azufrecs/blob/output/github-contribution-grid-snake.svg)
 
+![Visits](https://komarev.com/ghpvc/?username=azufrecs&label=Profile%20views&color=0e75b6&style=flat)
 <!--
 **azufrecs/azufrecs** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
