@@ -1,4 +1,5 @@
 name: Generate Snake
+
 on:
   schedule:
     - cron: "0 0 * * *"
@@ -6,21 +7,24 @@ on:
   push:
     branches:
       - main
+
 jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      
       - name: Generate snake
         uses: Platane/snk@v3
         with:
           github_user_name: azufrecs
           outputs: dist/github-contribution-grid-snake.svg
+          
       - name: Deploy to output branch
         uses: crazy-max/ghaction-github-pages@v3
         with:
           target_branch: output
           build_dir: dist
-          keep_files: true
+          keep_history: true  # Esto reemplaza a keep_files
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
