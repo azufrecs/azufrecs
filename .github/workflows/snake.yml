@@ -1,30 +1,45 @@
 name: Generate Snake
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: "0 0 * * *"
-  workflow_dispatch:
   push:
     branches:
       - main
 
 jobs:
-  generate:
+  generate-snake:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # ¡Esto es crucial!
+    
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Generate snake
+        
+      - name: Generate Snake
         uses: Platane/snk@v3
         with:
           github_user_name: azufrecs
-          outputs: dist/github-contribution-grid-snake.svg
+          outputs: out/snake.svg
           
-      - name: Deploy to output branch
-        uses: crazy-max/ghaction-github-pages@v3
+      - name: Push to Output Branch
+        uses: actions/github-script@v6
         with:
-          target_branch: output
-          build_dir: dist
-          keep_history: true  # Esto reemplaza a keep_files
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const { execSync } = require('child_process');
+            
+            try {
+              execSync('git checkout --orphan output');
+              execSync('git rm -rf .');
+              fs.copyFileSync('out/snake.svg', 'github-contribution-grid-snake.svg');
+              execSync('git add github-contribution-grid-snake.svg');
+              execSync('git config user.name "github-actions"');
+              execSync('git config user.email "41898282+github-actions[bot]@users.noreply.github.com"');
+              execSync('git commit -m "Update snake animation"');
+              execSync('git push origin output --force');
+            } catch (error) {
+              console.error(error);
+              core.setFailed(error.message);
+            }
