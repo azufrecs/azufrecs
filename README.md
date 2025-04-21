@@ -1,10 +1,11 @@
-## Hi there 👋
+# Hi there 👋
 
-## 🎈Just for fun
+## 🎈 Just for fun
 
 Watch a 🐍 eat my GitHub contributions 🍏.
 
-![GitHubContributionsSnake](https://raw.githubusercontent.com/azufrecs/azufrecs/refs/heads/output/github-contribution-grid-snake.svg)
+![Snake animation](https://github.com/azufrecs/azufrecs/blob/output/github-contribution-grid-snake.svg)
+
 
 <!--
 **azufrecs/azufrecs** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
