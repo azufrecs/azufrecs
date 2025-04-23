@@ -1,4 +1,4 @@
-# Hello World! I'm AZUfre
+# Hello World! I'm AZUfre 👋
 
 [![Website](https://img.shields.io/badge/-Portafolio-FF7139?style=for-the-badge&logo=firefox&logoColor=white)](http://www.acs.nat.cu)
 [![LinkedIn](https://img.shields.io/badge/-LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ericsedeno/)
