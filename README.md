@@ -31,11 +31,6 @@
 [![Estadísticas GitHub](https://github-readme-stats.vercel.app/api?username=azufrecs&show_icons=true&theme=radical&hide_border=true&include_all_commits=true)](https://github.com/azufrecs)
 [![Lenguajes Top](https://github-readme-stats.vercel.app/api/top-langs/?username=azufrecs&layout=compact&theme=radical&hide_border=true)](https://github.com/azufrecs)
 
-## 🚀 Proyectos Destacados
-
-[![Proyecto 1](https://github-readme-stats.vercel.app/api/pin/?username=azufrecs&repo=mejor-proyecto&theme=dark)](https://github.com/azufrecs/mejor-proyecto)
-[![Proyecto 2](https://github-readme-stats.vercel.app/api/pin/?username=azufrecs&repo=otro-proyecto&theme=dark)](https://github.com/azufrecs/otro-proyecto)
-
 ## 🎯 Más Sobre Mí
 
 - 🔭 Actualmente trabajando en: [Proyecto interesante]
