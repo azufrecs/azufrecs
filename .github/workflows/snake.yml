@@ -12,24 +12,26 @@ jobs:
   generate-snake:
     runs-on: ubuntu-latest
     permissions:
-      contents: write  # ¡Esto es crucial!
-    
+      contents: write
+
     steps:
       - uses: actions/checkout@v4
-        
+
       - name: Generate Snake
         uses: Platane/snk@v3
         with:
           github_user_name: azufrecs
-          outputs: out/snake.svg
-          
+          github_token: ${{ secrets.SNAKE_PAT }}
+          outputs: |
+            out/snake.svg
+
       - name: Push to Output Branch
         uses: actions/github-script@v6
         with:
           script: |
             const fs = require('fs');
             const { execSync } = require('child_process');
-            
+
             try {
               execSync('git checkout --orphan output');
               execSync('git rm -rf .');
