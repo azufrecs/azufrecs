@@ -21,7 +21,6 @@ jobs:
         uses: Platane/snk@v3
         with:
           github_user_name: azufrecs
-          github_token: ${{ secrets.SNAKE_PAT }}
           outputs: |
             out/snake.svg
 
